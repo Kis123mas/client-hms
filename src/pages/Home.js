@@ -4,7 +4,7 @@ import hospitalLogo from '../assets/logo.png';
 import LandingPageImage from '../assets/dashboardd.png';
 import Staticbutton from '../components/button/Staticbutton';
 import Preloader from '../components/preloader/Preloader';
-import PoweredBy from '../components/poweredBy/PoweredBy';
+// import PoweredBy from '../components/poweredBy/PoweredBy';
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -50,7 +50,7 @@ function Home() {
           </div>
         </div>
 
-        <PoweredBy />
+        {/* <PoweredBy /> */}
       </div>
 
       <div className="right-panel zoom-in">
