@@ -1,0 +1,416 @@
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 0.8s ease-out;
+}
+
+.expand-width {
+  animation: expandWidth 1s ease-out;
+}
+
+.zoom-in {
+  animation: zoomIn 1s ease-out;
+}
+
+.fade-in-delayed {
+  animation: fadeIn 1s ease-in-out 0.5s both;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { 
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  from { 
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 100px; }
+}
+
+@keyframes zoomIn {
+  from { 
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Make sure elements start invisible */
+.home-container:not(.fade-in) > * {
+  opacity: 0;
+}
+
+
+
+/* Flexbox container to split left & right */
+.home-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  width: 100%;
+}
+
+/* Left Panel (adjust width as needed) */
+.left-panel {
+  flex: 1.5; /* Takes 1 part of space */
+  padding: 2rem;
+  
+  /* border-right: 1px solid #ddd; */
+}
+
+.logo-container {
+  height: 50px;
+  padding-bottom: 4rem;
+}
+
+.left-header {
+  font-size: 23px;
+}
+
+.divider-line {
+  width: 100px;
+  height: 3px;
+  background: #3498db;
+}
+
+.left-para {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 35px;
+  width: 100%;
+}
+
+.ai-feature {
+  font-weight: 600;
+  color: #2c3e50;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+
+
+
+/* Add to your pages.css */
+
+.right-panel {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0.1rem;
+  
+  /* Border styling */
+  border-radius: 16px; /* More rounded corners */
+  border: 1px solid #e2e8f0; /* Optional subtle border */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Optional subtle shadow */
+  overflow: hidden; /* Crucial for rounded corners to work properly */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+@media screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .home-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .left-panel {
+    flex: none;
+    width: 100%;
+    padding: 2rem;
+    backdrop-filter: blur(3px);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    overflow-y: auto;  /* Enable scrolling inside the left panel */
+  }
+
+  .divider-line{
+    margin-left: 40px;
+  }
+
+  .right-panel,
+  .dashboard-image {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+/* Base Layout */
+.login-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Equal Halves */
+.login-half {
+    flex: 1;
+    display: flex;
+    min-width: 0;
+}
+
+.centered-content {
+    margin: auto;
+    width: 80%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Left Section - Visual */
+.left-section {
+    background: #99EEFF;
+}
+
+.circle-container {
+    position: relative;
+    width: 350px; /* Increased size */
+    height: 350px; /* Increased size */
+    margin: 0 auto;
+}
+
+.circle-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+}
+
+.circle-image {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 5%;
+    left: 5%;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Section - Form */
+.right-section {
+    background: #D9F9FF;
+    display: flex;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-logo {
+    height: 80px;
+    /* margin-bottom: 1.5rem; */
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.welcome-text {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.instruction-text {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.login-form {
+    width: 100%;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    outline: none;
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: -23px;
+    top: 52%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
+
+  .login-container {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .login-half.left-section {
+    display: none;
+  }
+  
+  .login-half.right-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box; /* ensures padding doesn't increase width */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .centered-content {
+    width: 100%;
+    max-width: 450px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .form-logo {
+    height: 60px;
+  }
+
+  .welcome-text {
+    font-size: 1.75rem;
+  }
+
+  .form-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .password-toggle {
+    right: 10px; /* keep it inside container */
+  }
+}

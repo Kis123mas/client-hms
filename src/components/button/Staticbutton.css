@@ -1,0 +1,32 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 10px;
+}
+
+.static-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: black;
+  border: 2px solid #2A7FCC;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 150px;
+}
+
+.static-button:hover {
+  background-color: #D9F9FF;
+  border-color: #1E6CB3;
+  color: #2A7FCC;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
