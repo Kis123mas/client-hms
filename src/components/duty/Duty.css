@@ -1,0 +1,199 @@
+/* Add these styles to your existing Duty.css */
+.scrollableDoctorList {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Custom scrollbar styling */
+.scrollableDoctorList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollableDoctorList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.scrollableDoctorList::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.scrollableDoctorList::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Keep all your existing CSS below */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 10px;
+  width: 600px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 10px;
+  width: 600px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #444;
+}
+
+.header {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.toggleButtons {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.toggleButtons button {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.activeToggle {
+  background-color: #007bff;
+  color: white;
+}
+
+.inactiveToggle {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.searchInput {
+  width: 70%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.doctorListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.doctorCard {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.doctorCard:hover {
+  transform: scale(1.01);
+  background: #f0f8ff;
+}
+
+.doctorImage {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.doctorDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.doctorName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.doctorNumber {
+  color: green;
+  font-weight: bold;
+}
+
+.doctorTime {
+  font-size: 12px;
+  color: #444;
+  font-family: monospace;
+}
+
+.noResults {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin-top: 20px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modalContent {
+    margin: 10px;
+  }
+}

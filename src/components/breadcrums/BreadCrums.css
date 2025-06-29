@@ -1,0 +1,98 @@
+.breadcrumbs-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Changed from wrap to prevent vertical stacking */
+  font-size: 14px;
+  background-color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  position: sticky;
+  top: 60px; /* Position below top-nav */
+  z-index: 10;
+  gap: 4px;
+  /* Disable horizontal scrolling */
+  overflow-x: hidden;
+  white-space: nowrap;
+  /* Contain breadcrumbs within viewport */
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Breadcrumb items */
+.separator {
+  margin: 0 4px;
+  color: #999;
+  font-size: 12px;
+  flex-shrink: 0; /* Prevent separator from shrinking */
+}
+
+.crumb-link {
+  color: #0066cc;
+  text-decoration: none;
+  padding: 4px 0;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1; /* Allow text truncation */
+  min-width: 0; /* Enable text truncation */
+}
+
+.current-crumb {
+  color: #333;
+  font-weight: bold;
+  padding: 4px 0;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .breadcrumbs-container {
+    padding: 8px 12px;
+    font-size: 13px;
+    position: fixed; /* Lock in place */
+    top: 60px; /* Below top-nav */
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* Disable scrolling behaviors */
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+
+  /* Compensate for fixed breadcrumbs */
+  main {
+    padding-top: 100px; /* top-nav + breadcrumbs height */
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumbs-container {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .separator {
+    margin: 0 3px;
+    font-size: 10px;
+  }
+
+  .crumb-link,
+  .current-crumb {
+    max-width: none; /* Remove max-width restriction */
+  }
+}
+
+/* Accessibility improvements */
+.crumb-link:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
