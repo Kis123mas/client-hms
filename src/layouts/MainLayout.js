@@ -52,15 +52,15 @@ const MainLayout = ({ children, isCollapsed }) => {
             <span>📊</span> {!isCollapsed && 'Dashboard'}
           </a>
           <a 
-            href="/register-patient" 
-            className={`nav-link ${isActive('/register-patient') ? 'active' : ''}`}
+            href="/registerpatient" 
+            className={`nav-link ${isActive('/registerpatient') ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <span>📝</span> {!isCollapsed && 'Register Patient'}
           </a>
           <a 
-            href="/book-appointment" 
-            className={`nav-link ${isActive('/book-appointment') ? 'active' : ''}`}
+            href="/bookappointment" 
+            className={`nav-link ${isActive('/bookappointment') ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <span>📅</span> {!isCollapsed && 'Book Appointment'}
