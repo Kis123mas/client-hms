@@ -15,12 +15,12 @@ const MainLayout = ({ children, isCollapsed }) => {
   return (
     <div className="side-nav-layout">
       {/* Mobile menu button */}
-      <button 
+      {/* <button 
         className="mobile-menu-button"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         {isMobileMenuOpen ? '✕' : '☰'}
-      </button>
+      </button> */}
 
       <aside 
         className={`full-height-sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}
@@ -43,6 +43,7 @@ const MainLayout = ({ children, isCollapsed }) => {
           </div>
         )}
 
+        {/* Desktop Navigation (hidden on mobile) */}
         <nav className="sidebar-nav">
           <a 
             href="/receptionist" 
@@ -75,6 +76,34 @@ const MainLayout = ({ children, isCollapsed }) => {
       <main className="main-content">
         {children}
       </main>
+      
+      {/* Mobile Bottom Navigation (only visible on mobile) */}
+      <nav className="mobile-bottom-nav">
+        <a 
+          href="/receptionist" 
+          className={`mobile-nav-link ${isActive('/receptionist') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <span>📊</span>
+          Dashboard
+        </a>
+        <a 
+          href="/registerpatient" 
+          className={`mobile-nav-link ${isActive('/registerpatient') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <span>📝</span>
+          Register
+        </a>
+        <a 
+          href="/bookappointment" 
+          className={`mobile-nav-link ${isActive('/bookappointment') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <span>📅</span>
+          Book
+        </a>
+      </nav>
     </div>
   );
 };

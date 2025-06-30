@@ -37,6 +37,18 @@
   min-width: 44px;
   min-height: 44px;
   justify-content: center;
+  position: relative;
+}
+
+.menu-icon {
+  display: block;
+}
+
+.mobile-logo {
+  display: none;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .profile-picture {
@@ -64,6 +76,14 @@
     overscroll-behavior: none;
   }
 
+  .menu-icon {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: block;
+  }
+
   /* Prevent any horizontal scroll */
   .top-nav::after {
     content: '';
@@ -79,6 +99,11 @@
   .menu-button {
     font-size: 1.3rem;
     padding: 0.5rem;
+  }
+
+  .mobile-logo {
+    width: 28px;
+    height: 28px;
   }
 
   .profile-picture {
@@ -105,7 +130,7 @@
 
 /* Accessibility improvements */
 .menu-button:focus {
-  outline: 2px solid #72BFFF;
+  /* outline: 2px solid #72BFFF; */
   outline-offset: 2px;
 }
 
