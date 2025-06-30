@@ -1,55 +1,4 @@
-/* Add these styles to your existing Duty.css */
-.scrollableDoctorList {
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 5px;
-}
-
-/* Custom scrollbar styling */
-.scrollableDoctorList::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scrollableDoctorList::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-.scrollableDoctorList::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-}
-
-.scrollableDoctorList::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Keep all your existing CSS below */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modalContent {
-  background: white;
-  border-radius: 10px;
-  width: 600px;
-  padding: 1.5rem;
-  position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-
-
+/* Modal styles */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -93,6 +42,7 @@
   color: #222;
 }
 
+/* Toggle buttons */
 .toggleButtons {
   display: flex;
   border: 1px solid #ccc;
@@ -122,6 +72,7 @@
   color: #333;
 }
 
+/* Search input */
 .searchInput {
   width: 70%;
   padding: 8px 10px;
@@ -132,6 +83,33 @@
   outline: none;
 }
 
+/* Scrollable list */
+.scrollableDoctorList {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Custom scrollbar */
+.scrollableDoctorList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollableDoctorList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.scrollableDoctorList::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.scrollableDoctorList::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Doctor cards */
 .doctorListWrapper {
   display: flex;
   flex-direction: column;
@@ -142,7 +120,7 @@
   display: flex;
   align-items: center;
   background: #f9f9f9;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 8px;
   transition: transform 0.2s;
 }
@@ -162,27 +140,37 @@
 
 .doctorDetails {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   align-items: center;
+  gap: 15px;
 }
 
 .doctorName {
   font-weight: 600;
   font-size: 14px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .doctorNumber {
   color: green;
   font-weight: bold;
+  width: 30px;
+  text-align: center;
 }
 
 .doctorTime {
   font-size: 12px;
   color: #444;
   font-family: monospace;
+  width: 120px;
+  text-align: right;
 }
 
+/* No results message */
 .noResults {
   text-align: center;
   font-size: 14px;
@@ -190,10 +178,37 @@
   margin-top: 20px;
 }
 
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .modalContent {
+    width: 90%;
     margin: 10px;
+    padding: 1rem;
+  }
+  
+  .toggleButtons {
+    width: 100%;
+  }
+  
+  .searchInput {
+    width: 80%;
+  }
+  
+  .doctorDetails {
+    gap: 10px;
+  }
+  
+  .doctorTime {
+    width: 100px;
+  }
+  
+  .doctorNumber {
+    width: 25px;
+  }
+  
+  .doctorImage {
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
   }
 }

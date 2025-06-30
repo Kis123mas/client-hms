@@ -15,15 +15,17 @@ const onDutyDoctors = [
 ];
 
 const offDutyDoctors = [
-  { name: 'Dr. Lily Ray', number: 2, time: '—' },
-  { name: 'Dr. Mike Taylor', number: 4, time: '—' },
-  { name: 'Dr. Sarah Connor', number: 6, time: '—' },
-  { name: 'Dr. David Smith', number: 8, time: '—' },
+  { name: 'Dr. Lily Ray', number: 0, time: '—' },
+  { name: 'Dr. Mike Taylor', number: 0, time: '—' },
+  { name: 'Dr. Sarah Connor', number: 0, time: '—' },
+  { name: 'Dr. David Smith', number: 0, time: '—' },
 ];
 
 export default function Duty({ onClose }) {
   const [activeTab, setActiveTab] = useState('on');
   const [searchTerm, setSearchTerm] = useState('');
+
+
 
   const doctors = activeTab === 'on' ? onDutyDoctors : offDutyDoctors;
 
@@ -69,8 +71,14 @@ export default function Duty({ onClose }) {
               <div className="doctorCard" key={index}>
                 <img src={Docpic} alt="doctor" className="doctorImage" />
                 <div className="doctorDetails">
-                  <div className="doctorName">{doctor.name}</div>
-                  <div className="doctorNumber">{doctor.number}</div>
+                  <div className="doctorName" title={doctor.name}>
+                    {doctor.name.length > 5 
+                      ? `${doctor.name.substring(0, 15)}...` 
+                      : doctor.name}
+                  </div>
+                  <div className="doctorNumber">
+                    { doctor.number}
+                  </div>
                   <div className="doctorTime">{doctor.time}</div>
                 </div>
               </div>
