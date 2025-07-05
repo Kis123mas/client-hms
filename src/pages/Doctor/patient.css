@@ -1,239 +1,504 @@
-.patient-header {
+.emr-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.emr-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    margin-top: 2.0rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-.page-title {
-    font-size: 1.5rem;
-    color: #2d3748;
-    margin: 0;
-}
-
-.patient-controls {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.search-container {
-    flex: 1;
-    min-width: 250px;
-}
-
-.search-input-wrapper {
-    position: relative;
+.back-button {
     display: flex;
     align-items: center;
-}
-
-.search-icon {
-    position: absolute;
-    left: 12px;
-    color: #718096;
-}
-
-.search-input {
-    width: 100%;
-    padding: 0.5rem 1rem 0.5rem 2.5rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    font-size: 0.9375rem;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #3182ce;
-    box-shadow: 0 0 0 1px #3182ce;
-}
-
-.clear-search-btn {
-    position: absolute;
-    right: 10px;
+    gap: 0.5rem;
     background: none;
     border: none;
-    color: #718096;
+    color: #3182ce;
+    font-weight: 500;
     cursor: pointer;
+    padding: 0.5rem 0;
 }
 
-.filter-dropdown {
-    position: relative;
-    min-width: 180px;
+.header-actions {
+    display: flex;
+    gap: 1rem;
 }
 
-.filter-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #718096;
-}
-
-.filter-select {
-    width: 100%;
-    padding: 0.5rem 1rem 0.5rem 2.5rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    font-size: 0.9375rem;
-    appearance: none;
-    background-color: white;
-    cursor: pointer;
-}
-
-.filter-select:focus {
-    outline: none;
-    border-color: #3182ce;
-    box-shadow: 0 0 0 1px #3182ce;
-}
-
-.dropdown-icon {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #718096;
-    pointer-events: none;
-}
-
-.patient-table-container {
-    overflow-x: auto;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-}
-
-.patient-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-}
-
-.patient-table th {
-    background-color: #f7fafc;
-    text-align: left;
-    padding: 0.75rem 1rem;
-    font-weight: 600;
-    color: #4a5568;
-    border-bottom: 1px solid #e2e8f0;
-    cursor: pointer;
-    user-select: none;
-}
-
-.patient-table td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #edf2f7;
-    color: #4a5568;
-}
-
-.table-header {
+.refer-button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.sort-icon {
-    transition: transform 0.2s;
-    opacity: 0.5;
-}
-
-.sort-icon.active {
-    opacity: 1;
-}
-
-.sort-icon.flipped {
-    transform: rotate(180deg);
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.status-badge.active {
-    background-color: #ebf8ff;
-    color: #3182ce;
-}
-
-.status-badge.inactive {
-    background-color: #fff5f5;
-    color: #e53e3e;
-}
-
-.view-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.375rem 0.75rem;
-    background-color: #ebf8ff;
-    color: #3182ce;
+    background: #6b46c1;
+    color: white;
     border: none;
     border-radius: 4px;
-    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.view-btn:hover {
-    background-color: #bee3f8;
+.refer-button:hover {
+    background-color: #553c9a;
 }
 
-.no-results-row td {
+.print-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.print-button:hover {
+    background-color: #2c5282;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2d3748;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.patient-info-section {
+    padding: 1.5rem;
+}
+
+.patient-banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.patient-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.patient-details h1 {
+    margin: 0 0 0.5rem 0;
+    color: #2d3748;
+    font-size: 1.75rem;
+}
+
+.patient-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: #4a5568;
+}
+
+.patient-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.patient-alerts {
+    flex: 1;
+    min-width: 300px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.alert-item.allergies {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.alert-item.conditions {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 1.25rem;
     text-align: center;
-    padding: 2rem;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    color: #3182ce;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
     color: #718096;
 }
 
+.emr-sections {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.emr-section {
+    margin-bottom: 3rem;
+}
+
+.history-table, .medication-table, .lab-table {
+    display: grid;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.history-header, .medication-header, .lab-header {
+    display: grid;
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #4a5568;
+    padding: 0.75rem 1rem;
+}
+
+.history-row, .medication-row, .lab-row {
+    display: grid;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.history-header, .history-row {
+    grid-template-columns: 1fr 1fr 1.5fr 1.5fr 2fr;
+}
+
+.medication-header, .medication-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1.5fr;
+}
+
+.lab-header, .lab-row {
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+}
+
+.status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    width: fit-content;
+}
+
+.status.normal {
+    background-color: #f0fff4;
+    color: #38a169;
+}
+
+.status.abnormal {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.clinical-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.note {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: #f7fafc;
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.note-content {
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+/* Admission Status Styles */
+.admission-status-container {
+    margin: 1rem 0;
+}
+
+.admission-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: default;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.admission-badge.admitted {
+    background-color: #ebf8ff;
+    color: #3182ce;
+    border: 1px solid #3182ce;
+}
+
+.admission-badge.not-admitted {
+    background-color: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #e53e3e;
+    cursor: pointer;
+}
+
+.admission-badge.not-admitted:hover {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.admission-badge.admitted:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-top: 2.5rem;
+    margin-left: -1rem;
+    white-space: pre;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.discharge-button {
+    margin-left: 1rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.discharge-button:hover {
+    background-color: #c53030;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.admission-modal {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2d3748;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: #718096;
+}
+
+.close-button:hover {
+    color: #e53e3e;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+    gap: 0.5rem;
+}
+
+.cancel-button {
+    padding: 0.5rem 1rem;
+    background: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background: #cbd5e0;
+}
+
+.confirm-button {
+    padding: 0.5rem 1rem;
+    background: #38a169;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm-button:hover {
+    background: #2f855a;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-    .patient-header {
+    .patient-banner {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 1rem;
     }
-    
-    .patient-controls {
-        width: 100%;
-        flex-direction: column;
-        gap: 0.75rem;
+
+    .quick-stats {
+        grid-template-columns: 1fr 1fr;
     }
-    
-    .search-container, .filter-dropdown {
-        min-width: 100%;
+
+    .history-header, .history-row,
+    .medication-header, .medication-row,
+    .lab-header, .lab-row {
+        grid-template-columns: 1fr;
     }
-    
-    .patient-table th, .patient-table td {
-        padding: 0.5rem;
-        font-size: 0.875rem;
+
+    .history-header > div,
+    .medication-header > div,
+    .lab-header > div {
+        display: none;
     }
-    
-    .view-btn {
-        padding: 0.25rem 0.5rem;
+
+    .history-row > div::before,
+    .medication-row > div::before,
+    .lab-row > div::before {
+        content: attr(data-label);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.25rem;
+        color: #718096;
         font-size: 0.75rem;
     }
-    
-    .view-icon {
-        display: none;
+
+    .history-row > div,
+    .medication-row > div,
+    .lab-row > div {
+        margin-bottom: 0.5rem;
+    }
+
+    .history-row > div:last-child,
+    .medication-row > div:last-child,
+    .lab-row > div:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .admission-modal {
+        width: 95%;
     }
 }
 
 @media (max-width: 480px) {
-    .receptionist-container {
-        padding: 1rem;
+    .quick-stats {
+        grid-template-columns: 1fr;
     }
-    
-    .patient-table th:nth-child(3), 
-    .patient-table td:nth-child(3) {
-        display: none;
+
+    .emr-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
-    
-    .patient-table th:nth-child(2), 
-    .patient-table td:nth-child(2) {
-        display: none;
+
+    .print-button {
+        width: 100%;
+        justify-content: center;
     }
 }

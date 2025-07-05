@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainLayout from '../../layouts/MainLayout';
 import TopNav from '../../components/topNav/TopNav';
 import ChatWidget from "../../components/chatwidget/ChatWidget";
@@ -19,13 +19,47 @@ import {
   FiBarChart2,
   FiFilePlus,
   FiPlusCircle,
-  FiHome
+  FiHome,
+  FiX
 } from 'react-icons/fi';
 import './emr.css';
 
 function PatientEMR() {
-    const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [showAdmitModal, setShowAdmitModal] = useState(false);
+    const [admissionDetails, setAdmissionDetails] = useState({
+        ward: '',
+        room: '',
+        bed: ''
+    });
     const navigate = useNavigate();
+
+    // Sample ward data with rooms and beds
+    const wards = [
+        {
+            name: 'Cardiology',
+            rooms: [
+                { number: '301', beds: ['A', 'B', 'C'] },
+                { number: '302', beds: ['A', 'B'] },
+                { number: '303', beds: ['A'] }
+            ]
+        },
+        {
+            name: 'General Medicine',
+            rooms: [
+                { number: '401', beds: ['A', 'B', 'C'] },
+                { number: '402', beds: ['A', 'B'] },
+                { number: '403', beds: ['A'] }
+            ]
+        },
+        {
+            name: 'Pediatrics',
+            rooms: [
+                { number: '501', beds: ['A', 'B'] },
+                { number: '502', beds: ['A'] }
+            ]
+        }
+    ];
 
     const crumbs = [
         { label: 'Dashboard', path: '/' },
@@ -34,7 +68,7 @@ function PatientEMR() {
     ];
 
     // Sample patient data with admission status
-    const [patient, setPatient] = React.useState({
+    const [patient, setPatient] = useState({
         id: 'PAT-789456',
         name: 'John Doe',
         age: 42,
@@ -45,11 +79,11 @@ function PatientEMR() {
         conditions: ['Hypertension', 'Type 2 Diabetes'],
         lastVisit: '2023-06-15',
         nextAppointment: '2023-08-20',
-        isAdmitted: true,
-        admissionDate: '2023-07-01T14:30:00',
-        ward: 'Cardiology',
-        room: '305',
-        bed: 'B'
+        isAdmitted: false,
+        admissionDate: null,
+        ward: null,
+        room: null,
+        bed: null
     });
 
     // Sample medical history
@@ -132,19 +166,44 @@ function PatientEMR() {
     };
 
     const handleDiagnoseClick = () => {
-        console.log("Refer button clicked");
         navigate(`/doc/patient-diagnos`);
     };
 
+    const openAdmitModal = () => {
+        setShowAdmitModal(true);
+    };
+
+    const closeAdmitModal = () => {
+        setShowAdmitModal(false);
+        setAdmissionDetails({ ward: '', room: '', bed: '' });
+    };
+
+    const handleAdmissionChange = (e) => {
+        const { name, value } = e.target;
+        setAdmissionDetails(prev => ({
+            ...prev,
+            [name]: value,
+            ...(name === 'ward' && { room: '', bed: '' }),
+            ...(name === 'room' && { bed: '' })
+        }));
+    };
+
     const handleAdmitPatient = () => {
+        if (!admissionDetails.ward || !admissionDetails.room || !admissionDetails.bed) {
+            alert('Please select ward, room, and bed');
+            return;
+        }
+
         setPatient(prev => ({
             ...prev,
             isAdmitted: true,
             admissionDate: new Date().toISOString(),
-            ward: 'General Medicine',
-            room: '405',
-            bed: 'A'
+            ward: admissionDetails.ward,
+            room: admissionDetails.room,
+            bed: admissionDetails.bed
         }));
+
+        closeAdmitModal();
     };
 
     const handleDischargePatient = () => {
@@ -159,21 +218,34 @@ function PatientEMR() {
     };
 
     const calculateAdmissionDuration = (admissionDate) => {
-    if (!admissionDate) return '';
-    
-    const now = new Date();
-    const admitted = new Date(admissionDate);
-    const diffMs = now - admitted;
-    
-    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    
-    return `${days}d ${hours}h ${minutes}m`;
+        if (!admissionDate) return '';
+        
+        const now = new Date();
+        const admitted = new Date(admissionDate);
+        const diffMs = now - admitted;
+        
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+        
+        return `${days}d ${hours}h ${minutes}m`;
     };
 
     const getAdmissionTooltip = () => {
         return `Ward: ${patient.ward}\nRoom: ${patient.room}\nBed: ${patient.bed}\nAdmitted: ${new Date(patient.admissionDate).toLocaleString()}\nDuration: ${calculateAdmissionDuration(patient.admissionDate)}`;
+    };
+
+    const getAvailableRooms = () => {
+        const ward = wards.find(w => w.name === admissionDetails.ward);
+        return ward ? ward.rooms : [];
+    };
+
+    const getAvailableBeds = () => {
+        const ward = wards.find(w => w.name === admissionDetails.ward);
+        if (!ward) return [];
+        
+        const room = ward.rooms.find(r => r.number === admissionDetails.room);
+        return room ? room.beds : [];
     };
 
     return (
@@ -235,9 +307,15 @@ function PatientEMR() {
                             {patient.isAdmitted ? (
                                 <div className="admission-badge admitted" title={getAdmissionTooltip()}>
                                     <FiHome /> Admitted
+                                    <button 
+                                        className="discharge-button"
+                                        onClick={handleDischargePatient}
+                                    >
+                                        Discharge
+                                    </button>
                                 </div>
                             ) : (
-                                <button className="admission-badge not-admitted" onClick={handleAdmitPatient}>
+                                <button className="admission-badge not-admitted" onClick={openAdmitModal}>
                                     <FiPlusCircle /> Admit Patient
                                 </button>
                             )}
@@ -366,6 +444,85 @@ function PatientEMR() {
                     </div>
                 </div>
             </div>
+
+            {/* Admission Modal */}
+            {showAdmitModal && (
+                <div className="modal-overlay">
+                    <div className="admission-modal">
+                        <div className="modal-header">
+                            <h3>Admit Patient</h3>
+                            <button className="close-button" onClick={closeAdmitModal}>
+                                <FiX />
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="form-group">
+                                <label>Ward:</label>
+                                <select 
+                                    name="ward" 
+                                    value={admissionDetails.ward}
+                                    onChange={handleAdmissionChange}
+                                    required
+                                >
+                                    <option value="">Select Ward</option>
+                                    {wards.map(ward => (
+                                        <option key={ward.name} value={ward.name}>
+                                            {ward.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            {admissionDetails.ward && (
+                                <div className="form-group">
+                                    <label>Room:</label>
+                                    <select 
+                                        name="room" 
+                                        value={admissionDetails.room}
+                                        onChange={handleAdmissionChange}
+                                        required
+                                    >
+                                        <option value="">Select Room</option>
+                                        {getAvailableRooms().map(room => (
+                                            <option key={room.number} value={room.number}>
+                                                {room.number}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+
+                            {admissionDetails.room && (
+                                <div className="form-group">
+                                    <label>Bed:</label>
+                                    <select 
+                                        name="bed" 
+                                        value={admissionDetails.bed}
+                                        onChange={handleAdmissionChange}
+                                        required
+                                    >
+                                        <option value="">Select Bed</option>
+                                        {getAvailableBeds().map(bed => (
+                                            <option key={bed} value={bed}>
+                                                {bed}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                        <div className="modal-footer">
+                            <button className="cancel-button" onClick={closeAdmitModal}>
+                                Cancel
+                            </button>
+                            <button className="confirm-button" onClick={handleAdmitPatient}>
+                                Confirm Admission
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <ChatWidget />
         </MainLayout>
     );
