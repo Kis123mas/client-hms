@@ -20,19 +20,39 @@ import {
   FiFilePlus,
   FiPlusCircle,
   FiHome,
-  FiX
+  FiX,
+  FiEye,
+  FiShoppingCart,
+  FiVolume2,
+  FiActivity as FiTest
 } from 'react-icons/fi';
 import './emr.css';
 
 function PatientEMR() {
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [showAdmitModal, setShowAdmitModal] = useState(false);
+    const [showReferModal, setShowReferModal] = useState(false);
     const [admissionDetails, setAdmissionDetails] = useState({
         ward: '',
         room: '',
         bed: ''
     });
+    const [referralDetails, setReferralDetails] = useState({
+        department: '',
+        description: '',
+        reason: ''
+    });
     const navigate = useNavigate();
+
+    // Departments available for referral
+    const departments = [
+        { value: 'pharmacy', label: 'Pharmacy', icon: <FiShoppingCart /> },
+        { value: 'eye', label: 'Eye Clinic', icon: <FiEye /> },
+        { value: 'ear', label: 'Ear/Nose', icon: <FiVolume2 /> },
+        { value: 'lab', label: 'Laboratory Tests', icon: <FiTest /> },
+        { value: 'radiology', label: 'Radiology', icon: <FiActivity /> },
+        { value: 'cardiology', label: 'Cardiology', icon: <FiHeart /> }
+    ];
 
     // Sample ward data with rooms and beds
     const wards = [
@@ -165,8 +185,8 @@ function PatientEMR() {
         setIsSidebarCollapsed(!isSidebarCollapsed);
     };
 
-    const handleDiagnoseClick = () => {
-        navigate(`/doc/patient-diagnos`);
+    const openReferModal = () => {
+        setShowReferModal(true);
     };
 
     const openAdmitModal = () => {
@@ -178,6 +198,11 @@ function PatientEMR() {
         setAdmissionDetails({ ward: '', room: '', bed: '' });
     };
 
+    const closeReferModal = () => {
+        setShowReferModal(false);
+        setReferralDetails({ department: '', description: '', reason: '' });
+    };
+
     const handleAdmissionChange = (e) => {
         const { name, value } = e.target;
         setAdmissionDetails(prev => ({
@@ -185,6 +210,14 @@ function PatientEMR() {
             [name]: value,
             ...(name === 'ward' && { room: '', bed: '' }),
             ...(name === 'room' && { bed: '' })
+        }));
+    };
+
+    const handleReferralChange = (e) => {
+        const { name, value } = e.target;
+        setReferralDetails(prev => ({
+            ...prev,
+            [name]: value
         }));
     };
 
@@ -204,6 +237,25 @@ function PatientEMR() {
         }));
 
         closeAdmitModal();
+    };
+
+    const handleReferPatient = () => {
+        if (!referralDetails.department) {
+            alert('Please select a department');
+            return;
+        }
+
+        if (!referralDetails.reason) {
+            alert('Please provide a reason for referral');
+            return;
+        }
+
+        // Here you would typically send the referral to your backend
+        console.log('Referring patient to:', referralDetails);
+        
+        // Show confirmation and close modal
+        alert(`Patient referred to ${departments.find(d => d.value === referralDetails.department)?.label}`);
+        closeReferModal();
     };
 
     const handleDischargePatient = () => {
@@ -262,7 +314,7 @@ function PatientEMR() {
                             <FiArrowLeft /> Back to Patients
                         </button>
                         <div className="header-actions">
-                            <button className="refer-button" onClick={handleDiagnoseClick}>
+                            <button className="refer-button" onClick={openReferModal}>
                                 <FiPlusCircle /> Refer
                             </button>
                             <button className="print-button">
@@ -517,6 +569,79 @@ function PatientEMR() {
                             </button>
                             <button className="confirm-button" onClick={handleAdmitPatient}>
                                 Confirm Admission
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Referral Modal */}
+            {showReferModal && (
+                <div className="modal-overlay">
+                    <div className="referral-modal">
+                        <div className="modal-header">
+                            <h3>Refer Patient</h3>
+                            <button className="close-button" onClick={closeReferModal}>
+                                <FiX />
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="form-group">
+                                <label>Department:</label>
+                                <div className="department-options">
+                                    {departments.map(dept => (
+                                        <label 
+                                            key={dept.value} 
+                                            className={`department-option ${referralDetails.department === dept.value ? 'selected' : ''}`}
+                                        >
+                                            <input
+                                                type="radio"
+                                                name="department"
+                                                value={dept.value}
+                                                checked={referralDetails.department === dept.value}
+                                                onChange={handleReferralChange}
+                                                className="hidden-radio"
+                                            />
+                                            <div className="department-icon">
+                                                {dept.icon}
+                                            </div>
+                                            <div className="department-label">
+                                                {dept.label}
+                                            </div>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label>Reason for Referral:</label>
+                                <textarea
+                                    name="reason"
+                                    value={referralDetails.reason}
+                                    onChange={handleReferralChange}
+                                    placeholder="Explain why you're referring the patient..."
+                                    rows="3"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Additional Description (Optional):</label>
+                                <textarea
+                                    name="description"
+                                    value={referralDetails.description}
+                                    onChange={handleReferralChange}
+                                    placeholder="Add any additional details or instructions..."
+                                    rows="3"
+                                />
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="cancel-button" onClick={closeReferModal}>
+                                Cancel
+                            </button>
+                            <button className="confirm-button" onClick={handleReferPatient}>
+                                Submit Referral
                             </button>
                         </div>
                     </div>
