@@ -195,13 +195,15 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .chat-widget {
-    left: 320px;
-    top: 600px;
+    right: 15px; /* Changed from left to right */
+    bottom: 15px;
   }
   
   .chat-container {
     width: 320px;
     height: 450px;
+    right: 0; /* Ensure it stays right-aligned */
+    left: auto; /* Reset any left positioning */
   }
 }
 
