@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from '../../layouts/MainLayout';
 import TopNav from '../../components/topNav/TopNav';
-import ChatWidget from "../../components/chatwidget/ChatWidget"
+import ChatWidget from "../../components/chatwidget/ChatWidget";
 import { useNavigate } from 'react-router-dom';
 import BreadCrums from '../../components/breadcrums/BreadCrums';
 import { 
@@ -18,7 +18,8 @@ import {
   FiClipboard,
   FiBarChart2,
   FiFilePlus,
-  FiPlusCircle
+  FiPlusCircle,
+  FiHome
 } from 'react-icons/fi';
 import './emr.css';
 
@@ -32,8 +33,8 @@ function PatientEMR() {
         { label: 'John Doe - EMR', path: '/patients/123/emr' }
     ];
 
-    // Sample patient data
-    const patient = {
+    // Sample patient data with admission status
+    const [patient, setPatient] = React.useState({
         id: 'PAT-789456',
         name: 'John Doe',
         age: 42,
@@ -43,8 +44,13 @@ function PatientEMR() {
         allergies: ['Penicillin', 'Peanuts'],
         conditions: ['Hypertension', 'Type 2 Diabetes'],
         lastVisit: '2023-06-15',
-        nextAppointment: '2023-08-20'
-    };
+        nextAppointment: '2023-08-20',
+        isAdmitted: true,
+        admissionDate: '2023-07-01T14:30:00',
+        ward: 'Cardiology',
+        room: '305',
+        bed: 'B'
+    });
 
     // Sample medical history
     const medicalHistory = [
@@ -126,9 +132,48 @@ function PatientEMR() {
     };
 
     const handleDiagnoseClick = () => {
-        // Add your diagnose functionality here
-        console.log("Diagnose button clicked");
+        console.log("Refer button clicked");
         navigate(`/doc/patient-diagnos`);
+    };
+
+    const handleAdmitPatient = () => {
+        setPatient(prev => ({
+            ...prev,
+            isAdmitted: true,
+            admissionDate: new Date().toISOString(),
+            ward: 'General Medicine',
+            room: '405',
+            bed: 'A'
+        }));
+    };
+
+    const handleDischargePatient = () => {
+        setPatient(prev => ({
+            ...prev,
+            isAdmitted: false,
+            admissionDate: null,
+            ward: null,
+            room: null,
+            bed: null
+        }));
+    };
+
+    const calculateAdmissionDuration = (admissionDate) => {
+    if (!admissionDate) return '';
+    
+    const now = new Date();
+    const admitted = new Date(admissionDate);
+    const diffMs = now - admitted;
+    
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    
+    return `${days}d ${hours}h ${minutes}m`;
+    };
+
+    const getAdmissionTooltip = () => {
+        return `Ward: ${patient.ward}\nRoom: ${patient.room}\nBed: ${patient.bed}\nAdmitted: ${new Date(patient.admissionDate).toLocaleString()}\nDuration: ${calculateAdmissionDuration(patient.admissionDate)}`;
     };
 
     return (
@@ -141,11 +186,11 @@ function PatientEMR() {
             <div className="scrollable-content">
                 <div className="receptionist-container">
                     <div className="emr-header">
-                        <button className="back-button">
+                        <button className="back-button" onClick={() => navigate('/patients')}>
                             <FiArrowLeft /> Back to Patients
                         </button>
                         <div className="header-actions">
-                            <button className="diagnose-button" onClick={handleDiagnoseClick}>
+                            <button className="refer-button" onClick={handleDiagnoseClick}>
                                 <FiPlusCircle /> Refer
                             </button>
                             <button className="print-button">
@@ -154,7 +199,6 @@ function PatientEMR() {
                         </div>
                     </div>
 
-                    {/* Patient Information Section */}
                     <section className="patient-info-section">
                         <h2 className="section-title"><FiUser /> Patient Information</h2>
                         <div className="patient-banner">
@@ -187,6 +231,18 @@ function PatientEMR() {
                             </div>
                         </div>
 
+                        <div className="admission-status-container">
+                            {patient.isAdmitted ? (
+                                <div className="admission-badge admitted" title={getAdmissionTooltip()}>
+                                    <FiHome /> Admitted
+                                </div>
+                            ) : (
+                                <button className="admission-badge not-admitted" onClick={handleAdmitPatient}>
+                                    <FiPlusCircle /> Admit Patient
+                                </button>
+                            )}
+                        </div>
+
                         <div className="quick-stats">
                             <div className="stat-card">
                                 <div className="stat-icon"><FiActivity /></div>
@@ -212,7 +268,6 @@ function PatientEMR() {
                     </section>
 
                     <div className="emr-sections">
-                        {/* Medical History Section */}
                         <section className="emr-section">
                             <h2 className="section-title"><FiClipboard /> Medical History</h2>
                             <div className="history-table">
@@ -235,7 +290,6 @@ function PatientEMR() {
                             </div>
                         </section>
 
-                        {/* Medications Section */}
                         <section className="emr-section">
                             <h2 className="section-title"><FiPieChart /> Current Medications</h2>
                             <div className="medication-table">
@@ -260,7 +314,6 @@ function PatientEMR() {
                             </div>
                         </section>
 
-                        {/* Lab Results Section */}
                         <section className="emr-section">
                             <h2 className="section-title"><FiBarChart2 /> Lab Results</h2>
                             <div className="lab-table">
@@ -283,7 +336,6 @@ function PatientEMR() {
                             </div>
                         </section>
 
-                        {/* Clinical Notes Section */}
                         <section className="emr-section">
                             <h2 className="section-title"><FiFilePlus /> Clinical Notes</h2>
                             <div className="clinical-notes">
