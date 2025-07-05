@@ -8,20 +8,16 @@ const MainLayout = ({ children, isCollapsed }) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
+  // Determine userRole based on URL path
+  const path = location.pathname;
+  const userRole = path.startsWith('/doc') ? 'doctor' : path.startsWith('/rep') ? 'receptionist' : 'doctor'; // default to doctor if neither
+
   const isActive = (path) => {
     return location.pathname === path;
   };
 
   return (
     <div className="side-nav-layout">
-      {/* Mobile menu button */}
-      {/* <button 
-        className="mobile-menu-button"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      >
-        {isMobileMenuOpen ? '✕' : '☰'}
-      </button> */}
-
       <aside 
         className={`full-height-sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}
       >
@@ -36,8 +32,12 @@ const MainLayout = ({ children, isCollapsed }) => {
             </div>
             {!isCollapsed && (
               <div className="profile-info">
-                <h3 className="profile-name">receptionist fullname</h3>
-                <p className="profile-role">RECEPTIONIST</p>
+                <h3 className="profile-name">
+                  {userRole === 'doctor' ? 'Doctor Fullname' : 'Receptionist Fullname'}
+                </h3>
+                <p className="profile-role">
+                  {userRole === 'doctor' ? 'DOCTOR' : 'RECEPTIONIST'}
+                </p>
               </div>
             )}
           </div>
@@ -45,27 +45,48 @@ const MainLayout = ({ children, isCollapsed }) => {
 
         {/* Desktop Navigation (hidden on mobile) */}
         <nav className="sidebar-nav">
-          <a 
-            href="/receptionist" 
-            className={`nav-link ${isActive('/receptionist') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span>📊</span> {!isCollapsed && 'Dashboard'}
-          </a>
-          <a 
-            href="/registerpatient" 
-            className={`nav-link ${isActive('/registerpatient') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span>📝</span> {!isCollapsed && 'Register Patient'}
-          </a>
-          <a 
-            href="/bookappointment" 
-            className={`nav-link ${isActive('/bookappointment') ? 'active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span>📅</span> {!isCollapsed && 'Book Appointment'}
-          </a>
+          {userRole === 'doctor' ? (
+            <>
+              <a 
+                href="/doc/doctor" 
+                className={`nav-link ${isActive('/doc/doctor') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📊</span> {!isCollapsed && 'Dashboard'}
+              </a>
+              <a 
+                href="/doc/patient" 
+                className={`nav-link ${isActive('/doc/patient') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>👨‍⚕️</span> {!isCollapsed && 'Patients'}
+              </a>
+            </>
+          ) : (
+            <>
+              <a 
+                href="/rep/receptionist" 
+                className={`nav-link ${isActive('/rep/receptionist') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📊</span> {!isCollapsed && 'Dashboard'}
+              </a>
+              <a 
+                href="/rep/registerpatient" 
+                className={`nav-link ${isActive('/rep/registerpatient') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📝</span> {!isCollapsed && 'Register Patient'}
+              </a>
+              <a 
+                href="/rep/bookappointment" 
+                className={`nav-link ${isActive('/rep/bookappointment') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📅</span> {!isCollapsed && 'Book Appointment'}
+              </a>
+            </>
+          )}
         </nav>
 
         <div className="sidebar-bottom">
@@ -79,30 +100,53 @@ const MainLayout = ({ children, isCollapsed }) => {
       
       {/* Mobile Bottom Navigation (only visible on mobile) */}
       <nav className="mobile-bottom-nav">
-        <a 
-          href="/receptionist" 
-          className={`mobile-nav-link ${isActive('/receptionist') ? 'active' : ''}`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span>📊</span>
-          Dashboard
-        </a>
-        <a 
-          href="/registerpatient" 
-          className={`mobile-nav-link ${isActive('/registerpatient') ? 'active' : ''}`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span>📝</span>
-          Register
-        </a>
-        <a 
-          href="/bookappointment" 
-          className={`mobile-nav-link ${isActive('/bookappointment') ? 'active' : ''}`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span>📅</span>
-          Book
-        </a>
+        {userRole === 'doctor' ? (
+          <>
+            <a 
+              href="/doc/doctor" 
+              className={`mobile-nav-link ${isActive('/doc/doctor') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📊</span>
+              Dashboard
+            </a>
+            <a 
+              href="/doc/patient" 
+              className={`mobile-nav-link ${isActive('/doc/patient') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>👨‍⚕️</span>
+              Patients
+            </a>
+          </>
+        ) : (
+          <>
+            <a 
+              href="/rep/receptionist" 
+              className={`mobile-nav-link ${isActive('/rep/receptionist') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📊</span>
+              Dashboard
+            </a>
+            <a 
+              href="/rep/registerpatient" 
+              className={`mobile-nav-link ${isActive('/rep/registerpatient') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📝</span>
+              Register
+            </a>
+            <a 
+              href="/rep/bookappointment" 
+              className={`mobile-nav-link ${isActive('/rep/bookappointment') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📅</span>
+              Book
+            </a>
+          </>
+        )}
       </nav>
     </div>
   );

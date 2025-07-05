@@ -1,4 +1,4 @@
-/* Fixed header (TopNav + BreadCrumbs) */
+
 .fixed-header {
     position: fixed;
     width: 100%;
@@ -699,10 +699,6 @@ textarea.booking-input {
     color: #374151;
 }
 
-.booking-actions {
-    /* margin: 10px 0; */
-}
-
 .button-group {
     display: flex;
     justify-content: space-between;
@@ -758,6 +754,9 @@ textarea.booking-input {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .receptionist-container{
+        margin-top: 15px;
+    }
     .booking-container {
         padding: 15px;
     }

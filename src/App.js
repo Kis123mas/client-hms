@@ -6,6 +6,10 @@ import Receptionist from './pages/Receptionist/Receptionist';
 import RegisterPatient from './pages/Receptionist/RegisterPatient';
 import BookAppointment from './pages/Receptionist/BookAppointment';
 import NotFound from './pages/Notfound';
+import Doctor from './pages/Doctor/Doctor';
+import Patient from './pages/Doctor/Patient';
+import PatientEMR from './pages/Doctor/PatientEMR';
+import Diagnosis from './pages/Doctor/Diagnosis';
 
 function App() {
   return (
@@ -14,9 +18,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/receptionist" element={<Receptionist />} />
-          <Route path="/registerpatient" element={<RegisterPatient />} />
-          <Route path="/bookappointment" element={<BookAppointment />} />
+
+          {/* receptionist pages */}
+          <Route path="/rep/receptionist" element={<Receptionist />} />
+          <Route path="/rep/registerpatient" element={<RegisterPatient />} />
+          <Route path="/rep/bookappointment" element={<BookAppointment />} />
+
+          {/* doctors pages */}
+          <Route path="/doc/doctor" element={<Doctor />} />
+          <Route path="/doc/patient" element={<Patient />} />
+          <Route path="/doc/patient-emr" element={<PatientEMR />} />
+          <Route path="/doc/patient-diagnos"element={<Diagnosis />} />
           {/* Add this catch-all route at the end */}
           <Route path="*" element={<NotFound />} />
         </Routes>

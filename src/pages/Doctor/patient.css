@@ -1,0 +1,239 @@
+.patient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-top: 2.0rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    color: #2d3748;
+    margin: 0;
+}
+
+.patient-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    color: #718096;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 1px #3182ce;
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+}
+
+.filter-dropdown {
+    position: relative;
+    min-width: 180px;
+}
+
+.filter-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    appearance: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 1px #3182ce;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    pointer-events: none;
+}
+
+.patient-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.patient-table th {
+    background-color: #f7fafc;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.patient-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #edf2f7;
+    color: #4a5568;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sort-icon {
+    transition: transform 0.2s;
+    opacity: 0.5;
+}
+
+.sort-icon.active {
+    opacity: 1;
+}
+
+.sort-icon.flipped {
+    transform: rotate(180deg);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-badge.active {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+.status-badge.inactive {
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    background-color: #ebf8ff;
+    color: #3182ce;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.view-btn:hover {
+    background-color: #bee3f8;
+}
+
+.no-results-row td {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+}
+
+@media (max-width: 768px) {
+    .patient-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .patient-controls {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .search-container, .filter-dropdown {
+        min-width: 100%;
+    }
+    
+    .patient-table th, .patient-table td {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .view-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .view-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .receptionist-container {
+        padding: 1rem;
+    }
+    
+    .patient-table th:nth-child(3), 
+    .patient-table td:nth-child(3) {
+        display: none;
+    }
+    
+    .patient-table th:nth-child(2), 
+    .patient-table td:nth-child(2) {
+        display: none;
+    }
+}

@@ -77,7 +77,7 @@ function Login() {
                                     </span>
                                 </div>
                             </div>
-                            <Staticbutton children='Login' href="/receptionist" />
+                            <Staticbutton children='Login' href="/rep/receptionist" />
                         </form>
                     </div>
                 </div>
