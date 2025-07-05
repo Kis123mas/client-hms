@@ -3,6 +3,7 @@ import MainLayout from '../../layouts/MainLayout';
 import TopNav from '../../components/topNav/TopNav';
 import { useNavigate } from 'react-router-dom';
 import './doctor.css';
+import ChatWidget from "../../components/chatwidget/ChatWidget";
 import BreadCrums from '../../components/breadcrums/BreadCrums';
 import { FiSearch, FiX } from 'react-icons/fi';
 import AppointmentCard from '../../components/appointment/AppointmentCard';
@@ -141,6 +142,7 @@ function Doctor() {
         confirmText="Yes, Cancel"
         cancelText="No, Keep It"
       />
+      <ChatWidget />
     </MainLayout>
   );
 }

@@ -2,6 +2,7 @@ import MainLayout from '../../layouts/MainLayout';
 import React, { useState } from 'react';
 import TopNav from '../../components/topNav/TopNav';
 import { useNavigate } from 'react-router-dom';
+import ChatWidget from "../../components/chatwidget/ChatWidget"
 import BreadCrums from '../../components/breadcrums/BreadCrums';
 import { FiSearch, FiChevronDown, FiEye, FiX } from 'react-icons/fi';
 import './patient.css';
@@ -180,6 +181,7 @@ function Patient() {
                     </div>
                 </div>
             </div>
+            <ChatWidget />
         </MainLayout>
     );
 }

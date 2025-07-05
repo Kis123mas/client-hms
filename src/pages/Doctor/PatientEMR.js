@@ -1,6 +1,7 @@
 import React from 'react';
 import MainLayout from '../../layouts/MainLayout';
 import TopNav from '../../components/topNav/TopNav';
+import ChatWidget from "../../components/chatwidget/ChatWidget"
 import { useNavigate } from 'react-router-dom';
 import BreadCrums from '../../components/breadcrums/BreadCrums';
 import { 
@@ -145,7 +146,7 @@ function PatientEMR() {
                         </button>
                         <div className="header-actions">
                             <button className="diagnose-button" onClick={handleDiagnoseClick}>
-                                <FiPlusCircle /> Diagnose
+                                <FiPlusCircle /> Refer
                             </button>
                             <button className="print-button">
                                 <FiPrinter /> Print EMR
@@ -313,6 +314,7 @@ function PatientEMR() {
                     </div>
                 </div>
             </div>
+            <ChatWidget />
         </MainLayout>
     );
 }
