@@ -195,7 +195,7 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .chat-widget {
-    left: 320px;
+    left: 330px;
     bottom: 55px;
     /* left: auto; */
   }
