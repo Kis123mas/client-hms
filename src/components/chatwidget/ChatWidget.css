@@ -195,22 +195,16 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .chat-widget {
-    left: 340px;
+    left: 15px;
     bottom: 15px;
-    /* left: auto; */
   }
   
   .chat-container {
     width: 320px;
     height: 450px;
-    right: 0;
-    left: auto; /* Reset any left positioning */
   }
-  
-  .chat-toggle-button {
-    left: auto; /* Remove the left positioning */
-    right: 15px; /* Position from the right instead */
-  }
+
+
 }
 
 @media (max-width: 480px) {
@@ -227,8 +221,6 @@
   }
   
   .chat-toggle-button {
-    right: 10px; /* Position from the right on smaller screens */
-    left: auto; /* Ensure left positioning is reset */
     width: 50px;
     height: 50px;
   }
