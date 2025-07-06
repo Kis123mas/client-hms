@@ -116,7 +116,7 @@ function Doctor() {
           
           {filteredAppointments.length === 0 ? (
             <div className="no-results">
-              <p>No appointments found matching your search.</p>
+              <p>No appointments found yet!</p>
             </div>
           ) : (
             <div className="appointments-grid">

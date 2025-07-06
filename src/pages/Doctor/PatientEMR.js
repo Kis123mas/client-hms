@@ -83,8 +83,7 @@ function PatientEMR() {
 
     const crumbs = [
         { label: 'Dashboard', path: '/' },
-        { label: 'Patients', path: '/patients' },
-        { label: 'John Doe - EMR', path: '/patients/123/emr' }
+        // { label: 'Patients', path: '/' },
     ];
 
     // Sample patient data with admission status
@@ -301,7 +300,7 @@ function PatientEMR() {
     };
 
     return (
-        <MainLayout isCollapsed={isSidebarCollapsed} userRole="doctor">
+        <MainLayout isCollapsed={isSidebarCollapsed}>
             <div className="fixed-header">
                 <TopNav onMenuClick={toggleSidebar} />
                 <BreadCrums items={crumbs} />
@@ -310,7 +309,7 @@ function PatientEMR() {
             <div className="scrollable-content">
                 <div className="receptionist-container">
                     <div className="emr-header">
-                        <button className="back-button" onClick={() => navigate('/patients')}>
+                        <button className="back-button" onClick={() => navigate('/doc/patient')}>
                             <FiArrowLeft /> Back to Patients
                         </button>
                         <div className="header-actions">
@@ -324,7 +323,7 @@ function PatientEMR() {
                     </div>
 
                     <section className="patient-info-section">
-                        <h2 className="section-title"><FiUser /> Patient Information</h2>
+                        <h2 className="emr-section-title"><FiUser /> Patient Information</h2>
                         <div className="patient-banner">
                             <div className="patient-details">
                                 <h1>{patient.name}</h1>
@@ -399,7 +398,7 @@ function PatientEMR() {
 
                     <div className="emr-sections">
                         <section className="emr-section">
-                            <h2 className="section-title"><FiClipboard /> Medical History</h2>
+                            <h2 className="emr-section-title"><FiClipboard /> Medical History</h2>
                             <div className="history-table">
                                 <div className="history-header">
                                     <div>Date</div>
@@ -421,7 +420,7 @@ function PatientEMR() {
                         </section>
 
                         <section className="emr-section">
-                            <h2 className="section-title"><FiPieChart /> Current Medications</h2>
+                            <h2 className="emr-section-title"><FiPieChart /> Current Medications</h2>
                             <div className="medication-table">
                                 <div className="medication-header">
                                     <div>Medication</div>
@@ -445,7 +444,7 @@ function PatientEMR() {
                         </section>
 
                         <section className="emr-section">
-                            <h2 className="section-title"><FiBarChart2 /> Lab Results</h2>
+                            <h2 className="emr-section-title"><FiBarChart2 /> Lab Results</h2>
                             <div className="lab-table">
                                 <div className="lab-header">
                                     <div>Test</div>
@@ -467,7 +466,7 @@ function PatientEMR() {
                         </section>
 
                         <section className="emr-section">
-                            <h2 className="section-title"><FiFilePlus /> Clinical Notes</h2>
+                            <h2 className="emr-section-title"><FiFilePlus /> Clinical Notes</h2>
                             <div className="clinical-notes">
                                 <div className="note">
                                     <div className="note-header">

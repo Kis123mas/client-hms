@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Preloader from '../components/preloader/Preloader';
 import './pages.css';
-import loginImage from '../assets/login.svg';
-import hospitalLogo from '../assets/logo.png';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Staticbutton from '../components/button/Staticbutton';
-import PoweredBy from '../components/poweredBy/PoweredBy';
 
 function Login() {
     const [loading, setLoading] = useState(true);
@@ -27,26 +24,13 @@ function Login() {
 
     return (
         <div className={`login-container ${fadeIn ? 'fade-in' : ''}`}>
-            {/* Left Section - Visual Panel */}
-            <div className="login-half left-section">
-                <div className="centered-content">
-                    <div className="circle-container">
-                        <div className="circle-background"></div>
-                        <img 
-                            src={loginImage} 
-                            alt="Hospital Illustration" 
-                            className="circle-image"
-                        />
-                    </div>
-                </div>
-                
-            </div>
-
-            {/* Right Section - Form Panel */}
-            <div className="login-half right-section">
+            {/* Right Section - Form Panel (now full width) */}
+            <div className="login-full">
                 <div className="centered-content">
                     <div className="form-header">
-                        <img src={hospitalLogo} alt="Hospital Logo" className="form-logo" />
+                        <div className="form-logo-circle">
+                            <div className="form-logo-initial">H</div>
+                        </div>
                         <h2 className="welcome-text">Welcome Back!</h2>
                         <p className="instruction-text">Please fill in your information to access your dashboard</p>
                     </div>
@@ -59,6 +43,7 @@ function Login() {
                                     type="email" 
                                     placeholder="Enter your email" 
                                     className="form-input"
+                                    required
                                 />
                             </div>
                             <div className="form-group password-group">
@@ -68,6 +53,7 @@ function Login() {
                                         type={showPassword ? "text" : "password"} 
                                         placeholder="Enter your password" 
                                         className="form-input"
+                                        required
                                     />
                                     <span 
                                         className="password-toggle"
@@ -77,11 +63,18 @@ function Login() {
                                     </span>
                                 </div>
                             </div>
+                            <div className="form-options">
+                                <div className="remember-me">
+                                    <input type="checkbox" id="remember" />
+                                    <label htmlFor="remember">Remember me</label>
+                                </div>
+                                <a href="/forgot-password" className="forgot-password">Forgot password?</a>
+                            </div>
                             <Staticbutton children='Login' href="/rep/receptionist" />
                         </form>
                     </div>
                 </div>
-                <PoweredBy />
+                {/* <PoweredBy /> */}
             </div>
         </div>
     );

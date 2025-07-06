@@ -1,7 +1,7 @@
 import React from 'react';
 import './MainLayout.css';
 import { useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.svg';
 import PoweredBy from '../components/poweredBy/PoweredBy';
 
 const MainLayout = ({ children, isCollapsed }) => {

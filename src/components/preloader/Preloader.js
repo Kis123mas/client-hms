@@ -1,5 +1,5 @@
 import React from 'react';
-import hospitalLogo from '../../assets/logo.png';
+import hospitalLogo from '../../assets/logo.svg';
 import './Preloader.css'; // Import your CSS
 
 function Preloader({ customLogo, loadingText = "Loading..." }) {

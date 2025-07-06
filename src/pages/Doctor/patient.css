@@ -223,9 +223,7 @@
 }
 
 @media (max-width: 480px) {
-    .receptionist-container {
-        padding: 1rem;
-    }
+
     
     .patient-table th:nth-child(3), 
     .patient-table td:nth-child(3) {

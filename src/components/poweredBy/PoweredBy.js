@@ -4,7 +4,7 @@ import "./PoweredBy.css";
 function PoweredBy() {
   return (
         <div className="powered-by fade-in-delayed">
-          <p>Powered by <strong>HealthTech Solutions</strong></p>
+          <p>Certified for use in healthcare | HIPAA Compliant</p>
         </div>
   )
 }
