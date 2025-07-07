@@ -10,11 +10,22 @@ const MainLayout = ({ children, isCollapsed }) => {
 
   // Determine userRole based on URL path
   const path = location.pathname;
-  const userRole = path.startsWith('/doc') ? 'doctor' : path.startsWith('/rep') ? 'receptionist' : 'doctor'; // default to doctor if neither
+  const userRole = path.startsWith('/doc') 
+    ? 'doctor' 
+    : path.startsWith('/rep') 
+      ? 'receptionist' 
+      : path.startsWith('/pat')
+        ? 'patient'
+        : 'doctor'; // default to doctor if none match
 
   const isActive = (path) => {
     return location.pathname === path;
   };
+
+  // const handleLogout = () => {
+  //   console.log('Logging out...');
+  //   setIsMobileMenuOpen(false);
+  // };
 
   return (
     <div className="side-nav-layout">
@@ -33,10 +44,14 @@ const MainLayout = ({ children, isCollapsed }) => {
             {!isCollapsed && (
               <div className="profile-info">
                 <h3 className="profile-name">
-                  {userRole === 'doctor' ? 'Doctor Fullname' : 'Receptionist Fullname'}
+                  {userRole === 'doctor' 
+                    ? 'Doctor Fullname' 
+                    : userRole === 'receptionist' 
+                      ? 'Receptionist Fullname'
+                      : 'Patient Fullname'}
                 </h3>
                 <p className="profile-role">
-                  {userRole === 'doctor' ? 'DOCTOR' : 'RECEPTIONIST'}
+                  {userRole.toUpperCase()}
                 </p>
               </div>
             )}
@@ -62,7 +77,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 <span>👨‍⚕️</span> {!isCollapsed && 'Patients'}
               </a>
             </>
-          ) : (
+          ) : userRole === 'receptionist' ? (
             <>
               <a 
                 href="/rep/receptionist" 
@@ -86,7 +101,49 @@ const MainLayout = ({ children, isCollapsed }) => {
                 <span>📅</span> {!isCollapsed && 'Book Appointment'}
               </a>
             </>
+          ) : (
+            // Patient navigation options
+            <>
+              <a 
+                href="/pat/dashboard" 
+                className={`nav-link ${isActive('/pat/patient') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
+              </a>
+              <a 
+                href="/pat/appointments" 
+                className={`nav-link ${isActive('/pat/appointments') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📅</span> {!isCollapsed && 'My Appointments'}
+              </a>
+              <a 
+                href="/pat/medicalrecords" 
+                className={`nav-link ${isActive('/pat/medicalrecords') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>🏥</span> {!isCollapsed && 'Medical Records'}
+              </a>
+            </>
           )}
+
+          {/* Common options for all users */}
+          <div className="common-user-options">
+            <a 
+              href={`/${userRole.substring(0, 3)}/profile`} 
+              className={`nav-link ${isActive(`/${userRole.substring(0, 3)}/profile`) ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>👤</span> {!isCollapsed && 'Profile'}
+            </a>
+            {/* <button 
+              className="nav-link"
+              onClick={handleLogout}
+            >
+              <span>🚪</span> {!isCollapsed && 'Logout'}
+            </button> */}
+          </div>
         </nav>
 
         <div className="sidebar-bottom">
@@ -119,7 +176,7 @@ const MainLayout = ({ children, isCollapsed }) => {
               Patients
             </a>
           </>
-        ) : (
+        ) : userRole === 'receptionist' ? (
           <>
             <a 
               href="/rep/receptionist" 
@@ -137,16 +194,45 @@ const MainLayout = ({ children, isCollapsed }) => {
               <span>📝</span>
               Register
             </a>
+          </>
+        ) : (
+          // Patient mobile navigation
+          <>
             <a 
-              href="/rep/bookappointment" 
-              className={`mobile-nav-link ${isActive('/rep/bookappointment') ? 'active' : ''}`}
+              href="/pat/patient" 
+              className={`mobile-nav-link ${isActive('/pat/patient') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>🏠</span>
+              Home
+            </a>
+            <a 
+              href="/pat/appointments" 
+              className={`mobile-nav-link ${isActive('/pat/appointments') ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>📅</span>
-              Book
+              Appointments
             </a>
           </>
         )}
+
+        {/* Common mobile options for all users */}
+        <a 
+          href={`/${userRole.substring(0, 3)}/profile`} 
+          className={`mobile-nav-link ${isActive(`/${userRole.substring(0, 3)}/profile`) ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <span>👤</span>
+          Profile
+        </a>
+        {/* <button 
+          className="mobile-nav-link"
+          onClick={handleLogout}
+        >
+          <span>🚪</span>
+          Logout
+        </button> */}
       </nav>
     </div>
   );

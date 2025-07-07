@@ -70,6 +70,10 @@ function LandingPage() {
               <h3>Inventory Control</h3>
               <p>Real-time tracking of medical supplies and equipment.</p>
             </div>
+            <div className="feature-card">
+              <h3>AI Assistance</h3>
+              <p>Leverage AI for smart scheduling, patient triage, and decision support to enhance clinical efficiency.</p>
+            </div>
           </div>
         </section>
 

@@ -11,6 +11,7 @@ import Doctor from './pages/Doctor/Doctor';
 import Patient from './pages/Doctor/Patient';
 import PatientEMR from './pages/Doctor/PatientEMR';
 import Diagnosis from './pages/Doctor/Diagnosis';
+import PatientDashboard from './pages/Patient/PatientDashboard';
 
 function App() {
   return (
@@ -30,7 +31,12 @@ function App() {
           <Route path="/doc/doctor" element={<Doctor />} />
           <Route path="/doc/patient" element={<Patient />} />
           <Route path="/doc/patient-emr" element={<PatientEMR />} />
-          <Route path="/doc/patient-diagnos"element={<Diagnosis />} />
+          <Route path="/doc/patient-diagnos" element={<Diagnosis />} />
+
+          {/* patient pages */}
+          <Route path="/pat/patient" element={<PatientDashboard />} />
+
+
           {/* Add this catch-all route at the end */}
           <Route path="*" element={<NotFound />} />
         </Routes>
