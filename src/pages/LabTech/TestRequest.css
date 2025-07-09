@@ -1,0 +1,178 @@
+.test-requests-container {
+  padding: 20px;
+  background-color: #f5f7fa;
+}
+
+.actions-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.search-filter-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.export-section {
+  display: flex;
+  gap: 10px;
+}
+
+.text-muted {
+  color: #6c757d;
+  font-size: 0.85em;
+}
+
+.request-details {
+  padding: 10px;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.detail-label {
+  font-weight: 600;
+  min-width: 150px;
+  color: #495057;
+}
+
+.detail-value {
+  flex: 1;
+  color: #212529;
+}
+
+.test-instructions {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #1890ff;
+  margin-top: 20px;
+}
+
+.test-instructions h4 {
+  margin-top: 0;
+  color: #343a40;
+}
+
+.test-instructions p {
+  margin-bottom: 0;
+  color: #495057;
+}
+
+/* Table customizations */
+.ant-table {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ant-table-thead > tr > th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background-color: #f1f5f9 !important;
+}
+
+/* Tag customizations */
+.ant-tag {
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.8em;
+  padding: 2px 8px;
+}
+
+/* Button customizations */
+.ant-btn {
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Card customizations */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ant-card-head-title {
+  font-weight: 600;
+  color: #343a40;
+}
+
+/* Modal customizations */
+.ant-modal-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ant-modal-title {
+  font-weight: 600;
+  color: #343a40;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .actions-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .search-filter-section {
+    width: 100%;
+  }
+  
+  .filter-group {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .export-section {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-row {
+    flex-direction: column;
+  }
+  
+  .detail-label {
+    margin-bottom: 4px;
+  }
+  
+  .filter-group > * {
+    width: 100%;
+  }
+  
+  .ant-picker-range {
+    width: 100% !important;
+  }
+}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import MainLayout from '../../layouts/MainLayout';
 import TopNav from '../../components/topNav/TopNav';
-import './Receptionist.css';
 import BreadCrums from '../../components/breadcrums/BreadCrums';
+import './Receptionist.css';
 import Docpic from '../../assets/docpic.svg';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';

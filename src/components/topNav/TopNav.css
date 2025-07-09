@@ -11,8 +11,8 @@
   top: 0;
   z-index: 100;
   width: 100%;
-  /* Prevent layout shift when scrollbar appears/disappears */
-  padding-right: calc(1rem + var(--scrollbar-width, 0px));
+  margin-left: auto; 
+  /* padding-right: calc(1rem + var(--scrollbar-width, 0px)); */
 }
 
 .top-nav-left {
@@ -22,6 +22,9 @@
 }
 
 .top-nav-right {
+  display: flex;
+  /* margin-right: 230px; */
+  align-items: center;
   position: relative;
 }
 
@@ -33,11 +36,9 @@
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  /* Better touch target */
   min-width: 44px;
   min-height: 44px;
   justify-content: center;
-  position: relative;
 }
 
 .menu-icon {
@@ -46,9 +47,128 @@
 
 .mobile-logo {
   display: none;
-  width: 32px;
-  height: 32px;
+  width: var(--mobile-logo-width, 32px);
+  height: var(--mobile-logo-height, 32px);
   object-fit: contain;
+}
+
+/* Notification Styles */
+.notification-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.notification-icon {
+  display: block;
+  font-size: 1.3rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 101;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 0 4px;
+}
+
+.notification-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-footer {
+  padding: 12px 16px;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+}
+
+.view-all-button {
+  background: none;
+  border: none;
+  color: #2a7ae9;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+}
+
+
+/* Add these new styles to your existing CSS */
+
+.profile-container {
+  position: relative;
+  margin-left: 15px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .profile-picture {
@@ -57,23 +177,93 @@
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #e0e0e0;
+  transition: transform 0.2s;
+}
+
+.profile-button:hover .profile-picture {
+  transform: scale(1.1);
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 160px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 101;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+  margin-top: 2px;
+}
+
+.profile-dropdown-item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #444;
+  transition: background-color 0.2s;
+}
+
+.profile-dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.profile-dropdown-item:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-icon {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+/* Ensure dropdowns don't overlap on mobile */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    right: 10px;
+    margin-top: 0;
+  }
+  
+  .notification-dropdown {
+    right: 10px;
+    width: calc(100vw - 20px);
+    max-width: 300px;
+  }
+}
+
+/* Close dropdown when clicking outside */
+body.top-nav-dropdown-open {
+  overflow: hidden;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
   :root {
-    --scrollbar-width: 0px; /* Assume no scrollbar on mobile */
+    --scrollbar-width: 0px;
   }
   
   .top-nav {
     padding: 0 0.75rem;
-    width: 100%;
-    position: fixed; /* Lock in place */
+    position: fixed;
     left: 0;
     right: 0;
-    /* Disable scrolling on the nav itself */
-    touch-action: none;
-    overscroll-behavior: none;
   }
 
   .menu-icon {
@@ -84,14 +274,9 @@
     display: block;
   }
 
-  /* Prevent any horizontal scroll */
-  .top-nav::after {
-    content: '';
-    position: absolute;
-    left: 100%;
-    width: 1px;
-    height: 1px;
-    background: transparent;
+  .notification-dropdown {
+    width: 280px;
+    right: 10px;
   }
 }
 
@@ -102,41 +287,29 @@
   }
 
   .mobile-logo {
-    width: 28px;
-    height: 28px;
+    width: 80px;
+    height: 80px;
   }
 
-  .profile-picture {
-    width: 32px;
-    height: 32px;
-  }
-
-  .dropdown-menu {
-    width: 140px;
-    top: 45px;
-    right: 0;
-    left: auto;
+  .notification-dropdown {
+    width: 260px;
   }
   
-  /* Ensure no scrolling can occur */
-  body.has-top-nav {
-    padding-top: 60px; /* Compensate for fixed nav */
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
+  .notification-item {
+    padding: 10px 12px;
   }
 }
 
 /* Accessibility improvements */
-.menu-button:focus {
-  /* outline: 2px solid #72BFFF; */
+.menu-button:focus,
+.notification-button:focus {
+  outline: 2px solid #72BFFF;
   outline-offset: 2px;
 }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .menu-button {
-    transition: none;
+  .notification-dropdown {
+    animation: none;
   }
 }

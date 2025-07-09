@@ -1,0 +1,189 @@
+/* PatientHealth.css */
+
+.ph-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.ph-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+
+.ph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.ph-header h2 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.ph-id {
+  font-size: 14px;
+  color: #888;
+}
+
+.ph-section {
+  margin-bottom: 35px;
+}
+
+.ph-section h3 {
+  font-size: 20px;
+  color: #34495e;
+  margin-bottom: 20px;
+  border-left: 5px solid #3498db;
+  padding-left: 10px;
+}
+
+.ph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.ph-history-item {
+  border-left: 4px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.ph-history-item:hover {
+  transform: translateY(-3px);
+}
+
+.ph-history-item h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.ph-history-item p {
+  font-size: 14px;
+  margin: 4px 0;
+  color: #555;
+}
+
+.ph-history-item.ongoing {
+  border-left-color: #f39c12;
+  background-color: #fffdf5;
+}
+
+.ph-history-item.resolved {
+  border-left-color: #2ecc71;
+  background-color: #f5fff9;
+}
+
+.ph-empty {
+  color: #888;
+  font-style: italic;
+}
+
+.ph-payment-box {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f6f8;
+  border-left: 5px solid #bdc3c7;
+}
+
+.ph-payment-box.pending {
+  border-left-color: #e74c3c;
+  background-color: #fff4f4;
+}
+
+.ph-payment-box.paid {
+  border-left-color: #2ecc71;
+  background-color: #f0fff5;
+}
+
+.ph-pay-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.ph-pay-btn:hover {
+  background-color: #2980b9;
+}
+
+/* PatientHealth.css */
+
+.ph-service-list {
+  margin-top: 15px;
+  background: #fdfdfd;
+  border-radius: 6px;
+  padding: 15px 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.ph-service-list h4 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.ph-service-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ph-service-list li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px dashed #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ph-service-list li:last-child {
+  border-bottom: none;
+}
+
+
+@media (max-width: 768px) {
+  .ph-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ph-header h2 {
+    font-size: 20px;
+  }
+
+  .ph-id {
+    font-size: 13px;
+  }
+
+  .ph-history-item h4 {
+    font-size: 16px;
+  }
+
+  .ph-history-item p {
+    font-size: 13px;
+  }
+
+  .ph-pay-btn {
+    width: 100%;
+  }
+}
