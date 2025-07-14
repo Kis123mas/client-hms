@@ -29,7 +29,7 @@ function Register() {
     <div className="register-container">
       <div className="register-full">
         <div className="centered-content">
-          <div className="form-header">
+          <div className="form-header1">
             <div className="form-logo-circle">
               <div className="form-logo-initial">H</div>
             </div>

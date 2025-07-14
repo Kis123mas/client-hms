@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './pages.css';
 import Preloader from '../components/preloader/Preloader';
-import HospitalLogo from '../assets/logo.svg';
+import HospitalLogo from '../assets/logo.png';
 
 function LandingPage() {
   const [loading, setLoading] = useState(true);

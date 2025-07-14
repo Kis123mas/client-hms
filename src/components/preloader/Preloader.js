@@ -1,6 +1,6 @@
 import React from 'react';
-import hospitalLogo from '../../assets/logo.svg';
-import './Preloader.css'; // Import your CSS
+import hospitalLogo from '../../assets/logo.png';
+import './Preloader.css';
 
 function Preloader({ customLogo, loadingText = "Loading..." }) {
   return (
