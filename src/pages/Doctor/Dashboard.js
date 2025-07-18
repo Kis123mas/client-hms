@@ -7,8 +7,6 @@ import {
   FaCalendarAlt, 
   FaUserMd, 
   FaProcedures, 
-  FaFlask,
-  FaChartBar,
   FaStethoscope,
   FaClipboardList,
   FaUserClock,

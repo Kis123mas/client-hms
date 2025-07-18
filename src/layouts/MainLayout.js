@@ -18,7 +18,13 @@ const MainLayout = ({ children, isCollapsed }) => {
         ? 'patient'
         : path.startsWith('/lab')
           ? 'labtech'
-          : 'patient';
+          : path.startsWith('/nur')
+            ? 'nurse'
+            : path.startsWith('/admin')
+              ? 'admin'
+              : path.startsWith('/phar')
+                ? 'pharmacy'
+                : 'patient';
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -47,7 +53,13 @@ const MainLayout = ({ children, isCollapsed }) => {
                       ? 'Receptionist Fullname'
                       : userRole === 'labtech'
                         ? 'Lab Technician Fullname'
-                        : 'Patient Fullname'}
+                        : userRole === 'nurse'
+                          ? 'Nurse Fullname'
+                          : userRole === 'admin'
+                            ? 'Admin Fullname'
+                            : userRole === 'pharmacy'
+                              ? 'Pharmacist Fullname'
+                              : 'Patient Fullname'}
                 </h3>
                 <p className="profile-role">
                   {userRole.toUpperCase()}
@@ -129,6 +141,85 @@ const MainLayout = ({ children, isCollapsed }) => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span>📋</span> {!isCollapsed && 'Test Results'}
+              </a>
+            </>
+          ) : userRole === 'nurse' ? (
+            <>
+              <a 
+                href="/nur/dashboard" 
+                className={`nav-link ${isActive('/nur/dashboard') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📊</span> {!isCollapsed && 'Dashboard'}
+              </a>
+              <a 
+                href="/nur/patientCare" 
+                className={`nav-link ${isActive('/nur/patientCare') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>👩‍⚕️</span> {!isCollapsed && 'Patient Care'}
+              </a>
+              <a 
+                href="/nur/vitals" 
+                className={`nav-link ${isActive('/nur/vitals') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>💓</span> {!isCollapsed && 'Vitals Monitoring'}
+              </a>
+              <a 
+                href="/nur/medication" 
+                className={`nav-link ${isActive('/nur/medication') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>💊</span> {!isCollapsed && 'Medication Admin'}
+              </a>
+            </>
+          ) : userRole === 'admin' ? (
+            <>
+              <a 
+                href="/admin/dashboard" 
+                className={`nav-link ${isActive('/admin/dashboard') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📊</span> {!isCollapsed && 'Dashboard'}
+              </a>
+              <a 
+                href="/admin/user-management" 
+                className={`nav-link ${isActive('/admin/user-management') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>👥</span> {!isCollapsed && 'User Management'}
+              </a>
+              <a 
+                href="/admin/reports" 
+                className={`nav-link ${isActive('/admin/reports') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📈</span> {!isCollapsed && 'Reports'}
+              </a>
+            </>
+          ) : userRole === 'pharmacy' ? (
+            <>
+              <a 
+                href="/phar/dashboard" 
+                className={`nav-link ${isActive('/phar/dashboard') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📊</span> {!isCollapsed && 'Dashboard'}
+              </a>
+              <a 
+                href="/phar/sales" 
+                className={`nav-link ${isActive('/phar/sales') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>📋</span> {!isCollapsed && 'Sales'}
+              </a>
+              <a 
+                href="/phar/inventory" 
+                className={`nav-link ${isActive('/phar/inventory') ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>💊</span> {!isCollapsed && 'Inventory'}
               </a>
             </>
           ) : (
@@ -236,6 +327,63 @@ const MainLayout = ({ children, isCollapsed }) => {
             >
               <span>📋</span>
               Results
+            </a>
+          </>
+        ) : userRole === 'nurse' ? (
+          <>
+            <a 
+              href="/nur/patients" 
+              className={`mobile-nav-link ${isActive('/nur/patients') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>👩‍⚕️</span>
+              Patients
+            </a>
+            <a 
+              href="/nur/vitals" 
+              className={`mobile-nav-link ${isActive('/nur/vitals') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>💓</span>
+              Vitals
+            </a>
+            <a 
+              href="/nur/medication" 
+              className={`mobile-nav-link ${isActive('/nur/medication') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>💊</span>
+              Medication
+            </a>
+          </>
+        ) : userRole === 'admin' ? (
+          <>
+            <a 
+              href="/admin/users" 
+              className={`mobile-nav-link ${isActive('/admin/users') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>👥</span>
+              Users
+            </a>
+          </>
+        ) : userRole === 'pharmacy' ? (
+          <>
+            <a 
+              href="/phar/sales" 
+              className={`mobile-nav-link ${isActive('/phar/prescriptions') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📋</span>
+              Sales
+            </a>
+            <a 
+              href="/phar/inventory" 
+              className={`mobile-nav-link ${isActive('/phar/sales') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>💊</span>
+              Inventory
             </a>
           </>
         ) : (

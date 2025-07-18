@@ -19,7 +19,14 @@ import Payment from './pages/Patient/Payment';
 import LabTechDashboard from './pages/LabTech/LabTechDashboard';
 import TestRequest from './pages/LabTech/TestRequest';
 import TestResult from './pages/LabTech/TestResult';
-import Nurse from './pages/Nurse/Nurse';
+import Nurse from './pages/Nurse/NurseDashboard';
+import AdminDashboard from './pages/PagesAdmin/AdminDashboard'
+import PharDashboard from './pages/Pharmacy/PharDashboard';
+import PatientCare from './pages/Nurse/PatientCare';
+import UserMgt from './pages/PagesAdmin/UserManagement';
+import Report from './pages/PagesAdmin/Report';
+import Inventory from './pages/Pharmacy/Inventory';
+import Sales from './pages/Pharmacy/Sales';
 
 function App() {
   return (
@@ -58,6 +65,19 @@ function App() {
 
           {/* {nurse pages} */}
           <Route path="/nur/dashboard" element={<Nurse />} />
+          <Route path="/nur/patientCare" element={<PatientCare />} />
+
+
+          {/* {pharmacy pages} */}
+          <Route path="/phar/dashboard" element={<PharDashboard />} />
+          <Route path="/phar/inventory" element={<Inventory />} />
+          <Route path="/phar/sales" element={<Sales />} />
+
+
+          {/* {admin pages} */}
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/user-management" element={<UserMgt />} />
+          <Route path="/admin/reports" element={<Report />} />
 
 
           {/* Add this catch-all route at the end */}
