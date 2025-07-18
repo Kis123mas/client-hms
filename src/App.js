@@ -19,6 +19,7 @@ import Payment from './pages/Patient/Payment';
 import LabTechDashboard from './pages/LabTech/LabTechDashboard';
 import TestRequest from './pages/LabTech/TestRequest';
 import TestResult from './pages/LabTech/TestResult';
+import Nurse from './pages/Nurse/Nurse';
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
           <Route path="/lab/dashboard" element={<LabTechDashboard /> } />
           <Route path="/lab/testrequest" element={<TestRequest />} />
           <Route path="/lab/testresult" element={<TestResult />} />
+
+
+          {/* {nurse pages} */}
+          <Route path="/nur/dashboard" element={<Nurse />} />
 
 
           {/* Add this catch-all route at the end */}
