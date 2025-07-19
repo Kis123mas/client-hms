@@ -39,7 +39,7 @@ function LandingPage() {
         </div>
       </nav>
 
-      <main>
+      <main className='home-main'>
         <section className="hero-section">
           <div className="hero-content">
             <h1>Hospital Management System</h1>
