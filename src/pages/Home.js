@@ -45,7 +45,7 @@ function LandingPage() {
             <h1>Hospital Management System</h1>
             <p>Advanced Healthcare Solutions for Modern Institutions</p>
             <div className="hero-buttons">
-              <button className="primary-button">Request Demo</button>
+              <button className="primary-button">Request</button>
               <button className="secondary-button">Learn More</button>
             </div>
           </div>

@@ -11,14 +11,13 @@ import {
   FaClipboardList,
   FaUserClock,
   FaHospitalUser,
-  FaNotesMedical,
-  FaBell
+  FaNotesMedical
 } from 'react-icons/fa';
 
 function DoctorDashboard() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  const crumbs = [{ label: 'Dashboard', path: '/doctor/dashboard' }];
+  const crumbs = [{ label: 'Dashboard' }];
 
   const [todaySchedule] = useState([
     { id: 1, time: '09:00 AM', patient: 'John Smith', type: 'Follow-up', status: 'Confirmed' },

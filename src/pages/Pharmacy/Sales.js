@@ -27,8 +27,7 @@ function SalesPage() {
     });
 
     const crumbs = [
-        { label: 'Dashboard', path: '/pharmacy/dashboard' },
-        { label: 'Sales', path: '/pharmacy/sales' }
+        { label: 'Dashboard'}
     ];
 
     // Sample drug data

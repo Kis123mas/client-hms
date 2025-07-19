@@ -20,7 +20,7 @@ import {
 function PharmacyDashboard() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  const crumbs = [{ label: 'Dashboard', path: '/pharmacy/dashboard' }];
+  const crumbs = [{ label: 'Dashboard' }];
 
   const [todayOrders] = useState([
     { id: 1, time: '09:00 AM', patient: 'John Smith', prescription: 'Amoxicillin 500mg', status: 'Ready for Pickup' },

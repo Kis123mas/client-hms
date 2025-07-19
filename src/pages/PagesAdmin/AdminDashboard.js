@@ -11,7 +11,7 @@ function AdminDashboard() {
   const [appointmentTrends, setAppointmentTrends] = useState([]);
   const [systemLoad, setSystemLoad] = useState([]);
 
-  const crumbs = [{ label: 'Admin Dashboard', path: '/admin/dashboard' }];
+  const crumbs = [{ label: 'Admin Dashboard' }];
 
   useEffect(() => {
     // Simulate API calls

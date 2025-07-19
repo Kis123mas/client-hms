@@ -1,19 +1,17 @@
 .breadcrumbs-container {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap; /* Changed from wrap to prevent vertical stacking */
+  flex-wrap: nowrap;
   font-size: 14px;
   background-color: #ffffff;
   padding: 10px 16px;
   border-radius: 4px;
   position: sticky;
-  top: 60px; /* Position below top-nav */
+  top: 60px;
   z-index: 10;
   gap: 4px;
-  /* Disable horizontal scrolling */
   overflow-x: hidden;
   white-space: nowrap;
-  /* Contain breadcrumbs within viewport */
   max-width: 100vw;
   box-sizing: border-box;
 }
@@ -23,7 +21,7 @@
   margin: 0 4px;
   color: #999;
   font-size: 12px;
-  flex-shrink: 0; /* Prevent separator from shrinking */
+  flex-shrink: 0;
 }
 
 .crumb-link {

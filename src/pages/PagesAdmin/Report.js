@@ -11,8 +11,7 @@ function Reports() {
   const [reportData, setReportData] = useState(null);
 
   const crumbs = [
-    { label: 'Dashboard', path: '/admin/dashboard' },
-    { label: 'Reports', path: '/admin/reports' }
+    { label: 'Dashboard' }
   ];
 
   useEffect(() => {

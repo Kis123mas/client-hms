@@ -2,7 +2,6 @@
 .doctor-appointments-container {
   padding: 20px;
   background-color: #f8f9fa;
-  min-height: calc(100vh - 110px);
 }
 
 .blur-background {

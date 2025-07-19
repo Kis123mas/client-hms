@@ -23,8 +23,7 @@ function InventoryManagement() {
     const [selectedDrug, setSelectedDrug] = useState(null);
 
     const crumbs = [
-        { label: 'Dashboard', path: '/pharmacy/dashboard' },
-        { label: 'Inventory Management', path: '/pharmacy/inventory' }
+        { label: 'Dashboard'}
     ];
 
     // Sample inventory data - in a real app, this would come from an API

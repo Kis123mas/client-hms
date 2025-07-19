@@ -20,8 +20,7 @@ function UserManagement() {
   });
 
   const crumbs = [
-    { label: 'Dashboard', path: '/admin/dashboard' },
-    { label: 'User Management', path: '/admin/users' }
+    { label: 'Dashboard' }
   ];
 
   useEffect(() => {

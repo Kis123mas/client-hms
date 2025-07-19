@@ -78,7 +78,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 className={`nav-link ${isActive('/doc/dashboard') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>📊</span> {!isCollapsed && 'Dashboard'}
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
                 href="/doc/doctor" 
@@ -102,7 +102,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 className={`nav-link ${isActive('/rep/receptionist') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>📊</span> {!isCollapsed && 'Dashboard'}
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
                 href="/rep/registerpatient" 
@@ -126,7 +126,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 className={`nav-link ${isActive('/lab/dashboard') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>📊</span> {!isCollapsed && 'Dashboard'}
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
                 href="/lab/testrequest" 
@@ -150,7 +150,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 className={`nav-link ${isActive('/nur/dashboard') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>📊</span> {!isCollapsed && 'Dashboard'}
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
                 href="/nur/patientCare" 
@@ -181,7 +181,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 className={`nav-link ${isActive('/admin/dashboard') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>📊</span> {!isCollapsed && 'Dashboard'}
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
                 href="/admin/user-management" 
@@ -205,7 +205,7 @@ const MainLayout = ({ children, isCollapsed }) => {
                 className={`nav-link ${isActive('/phar/dashboard') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span>📊</span> {!isCollapsed && 'Dashboard'}
+                <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
                 href="/phar/sales" 
@@ -279,7 +279,7 @@ const MainLayout = ({ children, isCollapsed }) => {
               className={`mobile-nav-link ${isActive('/doc/doctor') ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span>📊</span>
+              <span>🏠</span>
               Dashboard
             </a>
             <a 
@@ -298,7 +298,7 @@ const MainLayout = ({ children, isCollapsed }) => {
               className={`mobile-nav-link ${isActive('/rep/receptionist') ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span>📊</span>
+              <span>🏠</span>
               Dashboard
             </a>
             <a 
