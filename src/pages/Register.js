@@ -30,9 +30,6 @@ function Register() {
       <div className="register-full">
         <div className="centered-content">
           <div className="form-header1">
-            <div className="form-logo-circle">
-              <div className="form-logo-initial">H</div>
-            </div>
             <h2 className="welcome-text">Create Account</h2>
             <p className="instruction-text">Join us to access all features</p>
           </div>

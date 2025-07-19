@@ -28,9 +28,6 @@ function Login() {
             <div className="login-full">
                 <div className="centered-content">
                     <div className="form-header1">
-                        <div className="form-logo-circle">
-                            <div className="form-logo-initial">H</div>
-                        </div>
                         <h2 className="welcome-text">Welcome Back!</h2>
                         <p className="instruction-text">Please fill in your information to access your dashboard</p>
                     </div>
