@@ -233,8 +233,8 @@ const MainLayout = ({ children, isCollapsed }) => {
                 <span>🏠</span> {!isCollapsed && 'Dashboard'}
               </a>
               <a 
-                href="/pat/appointments" 
-                className={`nav-link ${isActive('/pat/appointments') ? 'active' : ''}`}
+                href="/pat/appoint" 
+                className={`nav-link ${isActive('/pat/appoint') ? 'active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span>📅</span> {!isCollapsed && 'My Appointments'}
@@ -411,8 +411,8 @@ const MainLayout = ({ children, isCollapsed }) => {
               Home
             </a>
             <a 
-              href="/pat/appointments" 
-              className={`mobile-nav-link ${isActive('/pat/appointments') ? 'active' : ''}`}
+              href="/pat/appoint" 
+              className={`mobile-nav-link ${isActive('/pat/appoint') ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>📅</span>

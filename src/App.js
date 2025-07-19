@@ -27,6 +27,7 @@ import UserMgt from './pages/PagesAdmin/UserManagement';
 import Report from './pages/PagesAdmin/Report';
 import Inventory from './pages/Pharmacy/Inventory';
 import Sales from './pages/Pharmacy/Sales';
+import PatientAppointment from './pages/Patient/AppointmentPat';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           {/* patient pages */}
           <Route path="/pat/patient" element={<PatientDashboard />} />
           <Route path="/pat/health" element={<Health />} />
+          <Route path="/pat/appoint" element={<PatientAppointment />} />
           <Route path="/pat/payment" element={<Payment />} />
 
 
