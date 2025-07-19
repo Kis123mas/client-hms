@@ -359,12 +359,25 @@ const MainLayout = ({ children, isCollapsed }) => {
         ) : userRole === 'admin' ? (
           <>
             <a 
-              href="/admin/users" 
-              className={`mobile-nav-link ${isActive('/admin/users') ? 'active' : ''}`}
+              href="/admin/dashboard" 
+              className={`mobile-nav-link ${isActive('/admin/dashboard') ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span>👥</span>
-              Users
+              <span>🏠</span> Dashboard
+            </a>
+            <a 
+              href="/admin/user-management" 
+              className={`mobile-nav-link ${isActive('/admin/user-management') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>👥</span> User Management
+            </a>
+            <a 
+              href="/admin/reports" 
+              className={`mobile-nav-link ${isActive('/admin/reports') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>📈</span>Reports
             </a>
           </>
         ) : userRole === 'pharmacy' ? (
